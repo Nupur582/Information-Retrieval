@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    <link rel="icon" href="http://obj-cache.cloud.ruanbekker.com/favicon.ico">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>News Search</title>
+
+  </head>
+  <body style="background-color:LightGray;">
+
+  <div class="container">
+    <div style="background:transparent !important" class="jumbotron">
+      <div style="font-family: 'courier', sans-serif;">
+        <p>
+          <center>
+          <font size="8">News Information retrieval Search Engine</font>
+          </center>
+        </p>
+      </div>
+    </div>
+
+  <center>
+    <h1>Total Search Results: ({{ res['hits']['total']['value'] }}) </h1>
+<!--      <h1>Results: ({{ res['hits']['total'] }}) </h1>-->
+  </center>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Published Date</th>
+        <th>Source</th>
+        <th>Title</th>
+        <th>description</th>
+      </tr>
+    </thead>
+
+{% for hit in res['hits']['hits'] %}
+    <tbody>
+      <tr>
+        <th scope="row">{{ hit['_source']['publishedAt'] }}</th>
+          <td>{{ hit['_source']['source'] }}</td>
+          <td><a href="{{ hit['_source']['url'] }}">{{ hit['_source']['title'] }}</a></td>
+          <td>{{ hit['_source']['description'] }}</td>
+      </tr>
+    </tbody>
+{% endfor %}
+  </table>
+
+        <footer class="footer">
+          <p>This project is done by Nupur (nr572) , Rohit (rl669) , Manisha (mun24) and Mahesh (ms4976). All &copy; Copyright 2020 </p>
+        </footer>
+
+      </div>
+    </div>
+  </body>
+<!--  </header>-->
+</html>
